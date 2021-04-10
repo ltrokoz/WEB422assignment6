@@ -1,0 +1,33 @@
+<!--
+/*********************************************************************************
+ * WEB422 – Assignment 6
+ * I declare that this assignment is my own work in accordance with Seneca Academic Policy. 
+ * No part of this assignment has been copied manually or electronically from any other source 
+ * (including web sites) or distributed to other students. 
+ * 
+ * Name: Liubov Trokoz       Student ID: 139578199      Date: 2021-04-09
+ * 
+ * 
+*********************************************************************************/
+-->
+
+<h1>Favourites</h1>
+<p>The following is a list of your favourite songs from various artists.<br />
+  Click the &nbsp;<mat-icon mat-list-icon>queue_music</mat-icon>&nbsp; icon to<b>remove</b> a song from your list</p><br />
+
+<mat-list>
+  <!-- single "favourite" card -->
+  <mat-list-item *ngFor="let favourite of favourites">
+    <mat-icon mat-list-icon (click)="removeFromFavourites(favourite.id)">queue_music</mat-icon>
+    <div mat-line>
+      <mat-card>
+        <mat-card-content><b>{{favourite.name}}</b> - {{(favourite.duration_ms / 60000).toFixed(2)}}<br /><br />
+          Artist(s): <span><a *ngFor="let artist of favourite.artists" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a>&nbsp;&nbsp;</span><br />
+          Album: <a routerLink="/album/{{favourite.album.id}}"> {{ favourite.album.name }}</a><br />
+          <div *ngIf="favourite.preview_url"><br /><audio controls [src]="favourite.preview_url"></audio></div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-list-item>
+  <!-- -->
+</mat-list>
