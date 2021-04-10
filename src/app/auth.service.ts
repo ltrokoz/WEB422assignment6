@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environment } from './../environments/environment';
-
-import { JwtHelperService } from '@auth0/angular-jwt';
-
-const helper = new JwtHelperService();
-
 import { User } from './User';
 import { RegisterUser } from './RegisterUser';
+
+const helper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
@@ -22,13 +21,11 @@ export class AuthService {
 
   readToken(): User {
     const token = this.getToken();
-
     return helper.decodeToken(token);
   }
 
   isAuthenticated(): boolean {
     const token = this.getToken();
-
     if (token) return true;
     return false;
   }
