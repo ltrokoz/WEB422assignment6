@@ -1,20 +1,13 @@
 <h1>{{ album?.name }}</h1>
-<p>
-  Click the
-  <mat-icon mat-list-icon>queue_music</mat-icon>
-  to <strong>add</strong> a song to your favourites list
-</p>
+<p>Click the<mat-icon mat-list-icon>queue_music</mat-icon>
+  to <strong>add</strong> a song to your favourites list</p>
 <p>Full track listing for {{ album?.name }}</p>
 
 <mat-card>
   <mat-card-content fxLayout="row wrap" fxLayout.xs="column">
     <div fxflex>
-      <img
-        src="{{ album?.images[1].url }}"
-        alt="album cover"
-        [style.margin]="'10px'"
-        [style.max-width]="'90%'"
-      />
+      <img src="{{ album?.images[1].url }}" alt="album cover"
+        [style.margin]="'10px'" [style.max-width]="'90%'"/>
     </div>
     <div fxFlex>
       <div [style.min-width]="'300px'" [style.margin]="'10px'">
@@ -25,17 +18,11 @@
         <strong>Popularity: </strong>{{ album?.popularity }}<br /><br />
 
         <mat-chip-list aria-label="Artist selection">
-          <mat-chip
-            *ngFor="let artist of album?.artists"
-            [routerLink]="['/artist', artist.id]"
-            >{{ artist.name }}</mat-chip
-          >
-        </mat-chip-list>
-        <br />
+          <mat-chip *ngFor="let artist of album?.artists"
+            [routerLink]="['/artist', artist.id]">{{ artist.name }}</mat-chip>
+        </mat-chip-list><br />
 
-        <div *ngFor="let copyright of album?.copyrights">
-          {{ copyright.text }}
-        </div>
+        <div *ngFor="let copyright of album?.copyrights">{{ copyright.text }}</div>
       </div>
     </div>
   </mat-card-content>
@@ -46,13 +33,10 @@
 <mat-list>
   <!-- Single "Responsive" Material List Item-->
   <mat-list-item *ngFor="let track of album?.tracks.items">
-    <mat-icon mat-list-icon (click)="addToFavourites(track.id)"
-      >queue_music</mat-icon
-    >
+    <mat-icon mat-list-icon (click)="addToFavourites(track.id)">queue_music</mat-icon>
     <div mat-line>
       <mat-card>
-        <mat-card-content
-          >{{ track.track_number }} {{ track.name }}
+        <mat-card-content>{{ track.track_number }} {{ track.name }}
           {{ (track.duration_ms / 60000).toFixed(2) }}
           <!-- NOTE 3.34 was determined by using (duration_ms / 60000).toFixed(2) -->
         </mat-card-content>
