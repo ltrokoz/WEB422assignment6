@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
+Server part: https://github.com/ltrokoz/WEB422assignment6_server
+
 ![image](https://user-images.githubusercontent.com/65572536/151432890-e8dfa624-b7d5-47ad-b26e-f6d70f36c67d.png)
 
 ## Development server
